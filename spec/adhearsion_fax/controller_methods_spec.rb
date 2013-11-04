@@ -10,16 +10,7 @@ module AdhearsionFax
 
       let(:mock_call) { double 'Call' }
 
-      subject do
-        TestController.new mock_call
-      end
-
-      describe "#greet" do
-        it "greets with the correct parameter" do
-          subject.should_receive(:play).once.with("Hello, Luca")
-          subject.greet "Luca"
-        end
-      end
+      subject { TestController.new mock_call }
 
     end
   end
