@@ -5,20 +5,18 @@ require "adhearsion_fax/version"
 Gem::Specification.new do |s|
   s.name        = "adhearsion_fax"
   s.version     = AdhearsionFax::VERSION
-  s.authors     = ["Plugin Author"]
-  s.email       = ["author@plugin.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.authors     = ["Justin Aiken"]
+  s.email       = ["60tonangel@gmail.com"]
+  s.license     = 'MIT'
+  s.homepage    = "https://github.com/grasshoppergroup/adhearsion-fax"
+  s.summary     = %q{A plugin for adding fax to Adhearsion}
+  s.description = %q{A plugin for adding fax to Adhearsion}
 
   s.rubyforge_project = "adhearsion_fax"
 
-  # Use the following if using Git
-  # s.files         = `git ls-files`.split("\n")
-  # s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.files         = Dir.glob("{lib}/**/*") + %w( README.md Rakefile Gemfile)
-  s.test_files    = Dir.glob("{spec}/**/*")
-  s.require_paths = ["lib"]
+  Use the following if using Git
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
 
   s.add_runtime_dependency %q<adhearsion>, ["~> 2.4"]
   s.add_runtime_dependency %q<activesupport>, [">= 3.0.10"]
