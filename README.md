@@ -30,7 +30,7 @@ To send multiple faxes with a common header and unique pages:
 send_fax({
   'http://example.com/fax.tiff'  => {pages: 1..2},
   'http://example.com/fax2.tiff' => {pages: 3..4}},
-  {header: "Same for both"}
+  header: "Same for both"
 )
 ```
 

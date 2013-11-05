@@ -48,7 +48,7 @@ module AdhearsionFax
 
       it "sends two faxes with a shared option" do
         expect_fax_output [expected_doc_one, expected_doc_two]
-        subject.send_fax({"http://example.com/shakespere.tiff" => {pages: 1..4}, "http://foo.com/bar.tiff" => {pages: 1..2}}, {header: 'Faxtime'})
+        subject.send_fax({"http://example.com/shakespere.tiff" => {pages: 1..4}, "http://foo.com/bar.tiff" => {pages: 1..2}}, header: 'Faxtime')
       end
 
       it "raises FaxSendError if something goes wrong" do
