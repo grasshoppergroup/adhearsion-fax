@@ -21,13 +21,17 @@ gem 'punchblock', github: "adhearsion/punchblock", branch: "feature/cpa_fax"
 To send a fax:
 
 ```ruby
-send_fax "http://shakespere.lit/my_fax.tiff",identity: '1112223333', header: 'This is a fax for you', pages: 1..4
+send_fax "http://foo.com/a_fax.tiff", identity: '1112223333', header: 'Hello!', pages: 1..4
 ```
 
 To send multiple faxes with a common header and unique pages:
 
 ```ruby
-send_fax({'http://example.com/fax.tiff' => {pages: 1..2}, 'http://example.com/fax2.tiff' => {pages: 3..4}}), header: "Same"
+send_fax({
+  'http://example.com/fax.tiff'  => {pages: 1..2},
+  'http://example.com/fax2.tiff' => {pages: 3..4}},
+  {header: "Same for both"}
+)
 ```
 
 To receive a fax (presumably after knowing you're getting a fax tone due to [adhearsion-cpa](https://github.com/grasshoppergroup/adhearsion-cpa)):
