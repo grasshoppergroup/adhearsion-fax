@@ -32,7 +32,7 @@ module AdhearsionFax
       component = Punchblock::Component::ReceiveFax.new
       execute_component_and_await_completion component
 
-      component.complete_event.fax
+      component.complete_event
     end
   end
 end

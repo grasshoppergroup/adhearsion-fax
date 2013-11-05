@@ -63,7 +63,7 @@ module AdhearsionFax
 
       it "receives a fax" do
         subject.should_receive(:execute_component_and_await_completion).once.with(input_component).and_return input_component
-        subject.receive_fax.should == complete_event.fax
+        subject.receive_fax.should == complete_event
       end
     end
   end

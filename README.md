@@ -33,7 +33,10 @@ send_fax({'http://example.com/fax.tiff' => {pages: 1..2}, 'http://example.com/fa
 To receive a fax (presumably after knowing you're getting a fax tone due to [adhearsion-cpa](https://github.com/grasshoppergroup/adhearsion-cpa)):
 
 ```ruby
-fax = receive_fax
+response = receive_fax
+
+url = response.fax.url  #=> "http://some_fax.com/some_fax.tiff"
+metadata = response.metadata #=> { "fax-transfer-rate" => "10000"...}
 ```
 
 ## More Information
