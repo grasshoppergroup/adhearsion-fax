@@ -4,7 +4,41 @@
 
 This plugin aims to provide a basic fax implementation.
 
+## Compatibility
+
+Asterisk - no
+FS/Event Socket - no
+FS/[mod_rayo](https://wiki.freeswitch.org/wiki/Mod_rayo) - yes
+
+To use currently, you'll have to specify a feature branch of [punchblock](https://github.com/adhearsion/punchblock/tree/feature/cpa_fax) in your Gemfile:
+
+```ruby
+gem 'punchblock', github: "adhearsion/punchblock", branch: "feature/cpa_fax"
+```
+
 ## Usage
+
+To send a fax:
+
+```ruby
+send_fax "http://shakespere.lit/my_fax.tiff",identity: '1112223333', header: 'This is a fax for you', pages: 1..4
+```
+
+To send multiple faxes with a common header and unique pages:
+
+```ruby
+send_fax({'http://example.com/fax.tiff' => {pages: 1..2}, 'http://example.com/fax2.tiff' => {pages: 3..4}}), header: "Same"
+```
+
+To receive a fax (presumably after knowing you're getting a fax tone due to [adhearsion-cpa](https://github.com/grasshoppergroup/adhearsion-cpa)):
+
+```ruby
+fax = receive_fax
+```
+
+## More information
+
+Specification: [rayo-fax](https://github.com/rayo/xmpp/blob/rayo/extensions/inbox/rayo-fax.xml)
 
 ## Credits
 
