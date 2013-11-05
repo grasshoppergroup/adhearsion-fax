@@ -6,9 +6,9 @@ This plugin aims to provide a basic fax implementation.
 
 ## Compatibility
 
-Asterisk - no
-FS/Event Socket - no
-FS/[mod_rayo](https://wiki.freeswitch.org/wiki/Mod_rayo) - yes
+* Asterisk - no
+* FS/Event Socket - no
+* FS/[mod_rayo](https://wiki.freeswitch.org/wiki/Mod_rayo) - yes
 
 To use currently, you'll have to specify a feature branch of [punchblock](https://github.com/adhearsion/punchblock/tree/feature/cpa_fax) in your Gemfile:
 
@@ -36,7 +36,7 @@ To receive a fax (presumably after knowing you're getting a fax tone due to [adh
 fax = receive_fax
 ```
 
-## More information
+## More Information
 
 Specification: [rayo-fax](https://github.com/rayo/xmpp/blob/rayo/extensions/inbox/rayo-fax.xml)
 
@@ -45,7 +45,6 @@ Specification: [rayo-fax](https://github.com/rayo/xmpp/blob/rayo/extensions/inbo
 Original author: [Justin Aiken](https://github.com/JustinAiken)
 
 Developed by [Mojo Lingo](http://mojolingo.com) in partnership with [Grasshopper](http://http://grasshopper.com/).
-
 Thanks to [Grasshopper](http://http://grasshopper.com/) for sponsorship of Adhearsion Fax.
 
 ## Links
