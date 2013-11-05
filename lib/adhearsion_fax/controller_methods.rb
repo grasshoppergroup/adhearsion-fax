@@ -10,7 +10,7 @@ module AdhearsionFax
     # @example Send different pages on different faxes, with a common header
     #   send_fax({'http://example.com/fax.tiff' => {pages: 1..2}, 'http://example.com/fax2.tiff' => {pages: 3..4}}), header: "Same"
     #
-    # @raise [PlaybackError] if the given fax could not be sent
+    # @raise [FaxSendError] if the given fax could not be sent
     #
     def send_fax(*arguments)
       options = arguments.last.is_a?(Hash) && arguments.count > 1 ? arguments.pop : {}

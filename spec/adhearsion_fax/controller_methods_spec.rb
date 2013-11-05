@@ -50,6 +50,11 @@ module AdhearsionFax
         expect_fax_output [expected_doc_one, expected_doc_two]
         subject.send_fax({"http://example.com/shakespere.tiff" => {pages: 1..4}, "http://foo.com/bar.tiff" => {pages: 1..2}}, {header: 'Faxtime'})
       end
+
+      it "raises FaxSendError if something goes wrong" do
+        subject.should_receive(:execute_component_and_await_completion).and_raise Punchblock::ProtocolError
+        expect {subject.send_fax "http://example.com/shakespere.tiff"}.to raise_error FaxPlayer::FaxSendError
+      end
     end
 
     describe "#receive_fax" do

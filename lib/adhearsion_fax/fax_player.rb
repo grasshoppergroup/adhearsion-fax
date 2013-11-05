@@ -1,6 +1,8 @@
 module AdhearsionFax
   class FaxPlayer < Adhearsion::CallController::Output::AbstractPlayer
 
+    FaxSendError = Class.new Adhearsion::Error
+
     def output(content, options = {}, &block)
       options.merge! :render_documents => Array(content)
 
@@ -14,7 +16,7 @@ module AdhearsionFax
     rescue Adhearsion::Call::Hangup
       raise
     rescue Adhearsion::Error, Punchblock::ProtocolError => e
-      raise PlaybackError, "Output failed due to #{e.inspect}"
+      raise FaxSendError, "Fax output failed due to #{e.inspect}"
     end
   end
 end
