@@ -27,5 +27,17 @@ module AdhearsionFax
     def fax_player
       @fax_player ||= FaxPlayer.new(self)
     end
+
+    #
+    # Waits for a fax and returns it, or returns nil if nothing was received
+    #
+    # @return [ReceiveFax::Fax] The fax document, or nil if timeout was reached.
+    #
+    def receive_fax
+      component = Punchblock::Component::ReceiveFax.new
+      execute_component_and_await_completion component
+
+      component.complete_event.fax
+    end
   end
 end

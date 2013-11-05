@@ -51,5 +51,20 @@ module AdhearsionFax
         subject.send_fax({"http://example.com/shakespere.tiff" => {pages: 1..4}, "http://foo.com/bar.tiff" => {pages: 1..2}}, {header: 'Faxtime'})
       end
     end
+
+    describe "#receive_fax" do
+      let(:input_component) { Punchblock::Component::ReceiveFax.new }
+      let(:complete_event)  { Punchblock::Component::ReceiveFax::Complete::Finish.new }
+
+      before do
+        complete_event.stub fax: double(url: "http://bar.com", resolution: "595x841")
+        Punchblock::Component::ReceiveFax.any_instance.stub(complete?: true, complete_event: complete_event)
+      end
+
+      it "receives a fax" do
+        subject.should_receive(:execute_component_and_await_completion).once.with(input_component).and_return input_component
+        subject.receive_fax.should == complete_event.fax
+      end
+    end
   end
 end
