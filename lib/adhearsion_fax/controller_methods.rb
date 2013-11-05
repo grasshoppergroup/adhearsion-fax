@@ -13,14 +13,9 @@ module AdhearsionFax
     # @raise [PlaybackError] if the given fax could not be sent
     #
     def send_fax(*arguments)
-      options = process_fax_args arguments
+      options = arguments.last.is_a?(Hash) && arguments.count > 1 ? arguments.pop : {}
       fax_player.output FaxFormatter.format_faxes(arguments, options)
       true
-    end
-
-    # @private
-    def process_fax_args(arguments)
-      arguments.last.is_a?(Hash) && arguments.count > 1 ? arguments.pop : {}
     end
 
     # @private
