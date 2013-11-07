@@ -1,4 +1,5 @@
-[![Build Status](https://secure.travis-ci.org/grasshoppergroup/adhearsion-fax.png?branch=master)](http://travis-ci.org/grasshoppergroup/adhearsion-fax)
+[![Build Status](https://secure.travis-ci.org/grasshoppergroup/adhearsion-fax.png?branch=master)](http://travis-ci.org/grasshoppergroup/adhearsion-fax) [![Coverage Status](https://coveralls.io/repos/grasshoppergroup/adhearsion-fax/badge.png?branch=master)](https://coveralls.io/r/grasshoppergroup/adhearsion-fax?branch=master)
+
 
 # Adhearsion Fax
 

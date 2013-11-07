@@ -1,8 +1,9 @@
 require 'adhearsion'
-require 'adhearsion_fax'
 
 require 'coveralls'
 Coveralls.wear!
+
+require 'adhearsion_fax'
 
 RSpec.configure do |config|
   config.color_enabled = true
