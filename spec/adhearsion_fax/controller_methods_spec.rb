@@ -4,7 +4,7 @@ module AdhearsionFax
   describe ControllerMethods do
 
     def expect_fax_output(fax_documents, options = {})
-      component = Punchblock::Component::Output.new(options.merge(render_documents: fax_documents))
+      component = Punchblock::Component::SendFax.new(options.merge(render_documents: fax_documents))
       subject.should_receive(:execute_component_and_await_completion).once.with(component)
     end
 
@@ -26,7 +26,7 @@ module AdhearsionFax
 
     describe "#send_fax" do
       let(:expected_doc_one) do
-        Punchblock::Component::Output::FaxDocument.new(
+        Punchblock::Component::SendFax::FaxDocument.new(
           url: "http://example.com/shakespere.tiff",
           pages: 1..4,
           header: "Faxtime"
@@ -34,7 +34,7 @@ module AdhearsionFax
       end
 
       let(:expected_doc_two) do
-        Punchblock::Component::Output::FaxDocument.new(
+        Punchblock::Component::SendFax::FaxDocument.new(
           url: "http://foo.com/bar.tiff",
           pages: 1..2,
           header: "Faxtime"

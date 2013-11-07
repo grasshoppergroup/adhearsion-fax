@@ -6,7 +6,7 @@ module AdhearsionFax
     def output(content, options = {}, &block)
       options.merge! :render_documents => Array(content)
 
-      component = Punchblock::Component::Output.new options
+      component = Punchblock::Component::SendFax.new options
 
       if block
         controller.execute_component_and_await_completion component, &block

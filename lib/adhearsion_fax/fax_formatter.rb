@@ -17,7 +17,7 @@ module AdhearsionFax
     end
 
     def self.format_fax(fax, options)
-      Punchblock::Component::Output::FaxDocument.new options.merge(url: fax)
+      Punchblock::Component::SendFax::FaxDocument.new options.merge(url: fax)
     end
   end
 end
