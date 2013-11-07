@@ -1,6 +1,9 @@
 require 'adhearsion'
 require 'adhearsion_fax'
 
+require 'coveralls'
+Coveralls.wear!
+
 RSpec.configure do |config|
   config.color_enabled = true
   config.tty = true
