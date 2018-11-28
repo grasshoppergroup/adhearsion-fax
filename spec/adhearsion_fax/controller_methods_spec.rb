@@ -4,13 +4,17 @@ module AdhearsionFax
   describe ControllerMethods do
 
     def expect_fax_output(fax_documents, options = {})
-      component = Punchblock::Component::SendFax.new(options.merge(render_documents: fax_documents))
+      component = Adhearsion::Rayo::Component::SendFax.new(options.merge(render_documents: fax_documents))
       subject.should_receive(:execute_component_and_await_completion).once.with(component)
     end
 
     let(:mock_call) { double 'Call' }
 
     subject { Adhearsion::CallController.new mock_call }
+
+    before do
+      allow(Adhearsion).to receive(:new_request_id).and_return('f00123')
+    end
 
     describe "#fax_player" do
       it "should return a Player component targetted at the current subject" do
@@ -26,7 +30,7 @@ module AdhearsionFax
 
     describe "#send_fax" do
       let(:expected_doc_one) do
-        Punchblock::Component::SendFax::FaxDocument.new(
+        Adhearsion::Rayo::Component::SendFax::FaxDocument.new(
           url: "http://example.com/shakespere.tiff",
           pages: 1..4,
           header: "Faxtime"
@@ -34,7 +38,7 @@ module AdhearsionFax
       end
 
       let(:expected_doc_two) do
-        Punchblock::Component::SendFax::FaxDocument.new(
+        Adhearsion::Rayo::Component::SendFax::FaxDocument.new(
           url: "http://foo.com/bar.tiff",
           pages: 1..2,
           header: "Faxtime"
@@ -52,18 +56,18 @@ module AdhearsionFax
       end
 
       it "raises FaxSendError if something goes wrong" do
-        subject.should_receive(:execute_component_and_await_completion).and_raise Punchblock::ProtocolError
+        subject.should_receive(:execute_component_and_await_completion).and_raise Adhearsion::ProtocolError
         expect {subject.send_fax "http://example.com/shakespere.tiff"}.to raise_error FaxPlayer::FaxSendError
       end
     end
 
     describe "#receive_fax" do
-      let(:input_component) { Punchblock::Component::ReceiveFax.new }
-      let(:complete_event)  { Punchblock::Component::ReceiveFax::Complete::Finish.new }
+      let(:input_component) { Adhearsion::Rayo::Component::ReceiveFax.new }
+      let(:complete_event)  { Adhearsion::Rayo::Component::ReceiveFax::Complete::Finish.new }
 
       before do
         complete_event.stub fax: double(url: "http://bar.com", resolution: "595x841")
-        Punchblock::Component::ReceiveFax.any_instance.stub(complete?: true, complete_event: complete_event)
+        Adhearsion::Rayo::Component::ReceiveFax.any_instance.stub(complete?: true, complete_event: complete_event)
       end
 
       it "receives a fax" do

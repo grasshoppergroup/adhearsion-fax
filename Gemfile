@@ -1,5 +1,5 @@
 source "http://rubygems.org"
 
-gem 'punchblock', github: "adhearsion/punchblock", branch: "feature/cpa_fax"
+gem 'adhearsion', github: "adhearsion/adhearsion", branch: "develop"
 # Specify your gem's dependencies in plugin-template.gemspec
 gemspec

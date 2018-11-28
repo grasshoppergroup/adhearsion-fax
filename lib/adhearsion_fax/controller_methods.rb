@@ -29,7 +29,7 @@ module AdhearsionFax
     # @return [ReceiveFax::Fax] The fax document, or nil if timeout was reached.
     #
     def receive_fax
-      component = Punchblock::Component::ReceiveFax.new
+      component = Adhearsion::Rayo::Component::ReceiveFax.new
       execute_component_and_await_completion component
 
       component.complete_event
