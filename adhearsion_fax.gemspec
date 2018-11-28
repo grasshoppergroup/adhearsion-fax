@@ -17,8 +17,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
 
-  s.add_runtime_dependency %q<adhearsion>, ["~> 2.4"]
-  s.add_runtime_dependency %q<activesupport>, [">= 3.0.10"]
+  s.add_runtime_dependency %q<adhearsion>, ["~> 3.0.0.beta"]
 
   s.add_development_dependency %q<coveralls>, ['>= 0']
   s.add_development_dependency %q<bundler>, ["~> 1.0"]

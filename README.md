@@ -11,12 +11,6 @@ This plugin aims to provide a basic fax implementation.
 * FS/Event Socket - no
 * FS/[mod_rayo](https://wiki.freeswitch.org/wiki/Mod_rayo) - yes
 
-To use currently, you'll have to specify a feature branch of [punchblock](https://github.com/adhearsion/punchblock/tree/feature/cpa_fax) in your Gemfile:
-
-```ruby
-gem 'punchblock', github: "adhearsion/punchblock", branch: "feature/cpa_fax"
-```
-
 ## Usage
 
 To send a fax:

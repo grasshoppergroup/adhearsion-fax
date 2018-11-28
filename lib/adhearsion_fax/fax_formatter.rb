@@ -1,4 +1,4 @@
-require 'punchblock/component/output'
+require 'adhearsion/rayo/component/output'
 
 module AdhearsionFax
   module FaxFormatter
@@ -17,7 +17,7 @@ module AdhearsionFax
     end
 
     def self.format_fax(fax, options)
-      Punchblock::Component::SendFax::FaxDocument.new options.merge(url: fax)
+      Adhearsion::Rayo::Component::SendFax::FaxDocument.new options.merge(url: fax)
     end
   end
 end
