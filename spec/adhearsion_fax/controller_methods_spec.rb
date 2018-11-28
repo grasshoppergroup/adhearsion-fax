@@ -12,6 +12,10 @@ module AdhearsionFax
 
     subject { Adhearsion::CallController.new mock_call }
 
+    before do
+      allow(Adhearsion).to receive(:new_request_id).and_return('f00123')
+    end
+
     describe "#fax_player" do
       it "should return a Player component targetted at the current subject" do
         fax_player = subject.fax_player
